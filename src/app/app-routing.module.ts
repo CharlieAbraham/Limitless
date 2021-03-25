@@ -1,7 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginComponent} from './login/login.component';
 import {BaseLayoutComponent} from './base-layout/base-layout.component';
+import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import {LoginComponent} from './pages/login/login.component';
+import {MarketDataComponent} from './pages/market-data/market-data.component';
+import {UsersComponent} from './pages/users/users.component';
 
 
 const routes: Routes = [
@@ -12,11 +15,20 @@ const routes: Routes = [
     component: BaseLayoutComponent,
     children: [
       {
-        path: 'core',
-        loadChildren: () => import('./core/core.module').then(m => m.CoreModule)
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
+        path: 'market-data',
+        component: MarketDataComponent
+      },
+      {
+        path: 'users',
+        component: UsersComponent
       }
     ]
   },
+  {path: '**', redirectTo: 'login'}
 ];
 
 @NgModule({
