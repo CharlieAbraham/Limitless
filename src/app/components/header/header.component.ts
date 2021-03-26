@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Config} from '../../models/Config';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  name: string = ""
+  email: string = ""
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.name = Config.getName();
+    this.email = Config.getEmail();
+  }
+
+
+  logout() {
+    Config.clear();
+    this.router.navigateByUrl("/login")
   }
 
 }
