@@ -21,6 +21,10 @@ class Config {
     return sessionStorage.getItem("token")
   }
 
+  static userIsAuthenticated() : boolean {
+    return sessionStorage.getItem("id") !== null;
+  }
+
   static clear() {
     sessionStorage.clear();
   }

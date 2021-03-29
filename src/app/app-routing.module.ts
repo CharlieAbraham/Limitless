@@ -8,6 +8,7 @@ import {UsersComponent} from './pages/users/users.component';
 import {CustomersComponent} from './pages/customers/customers.component';
 import {TradesComponent} from './pages/trades/trades.component';
 import {ExecutionsComponent} from './pages/executions/executions.component';
+import {AuthGuardService} from './services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -19,27 +20,33 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'market-data',
-        component: MarketDataComponent
+        component: MarketDataComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'admins',
-        component: UsersComponent
+        component: UsersComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'customers',
-        component: CustomersComponent
+        component: CustomersComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'trades',
-        component: TradesComponent
+        component: TradesComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'trades/:id/details',
-        component: ExecutionsComponent
+        component: ExecutionsComponent,
+        canActivate: [AuthGuardService]
       },
     ]
   },
