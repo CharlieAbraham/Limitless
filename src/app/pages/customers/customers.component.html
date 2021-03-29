@@ -4,7 +4,7 @@
     <!-- begin page title -->
     <div class="d-block d-sm-flex flex-nowrap align-items-center">
       <div class="page-title mb-2 mb-sm-0">
-        <h1>Customers</h1>
+        <h1>Customers ({{ customers.length }})</h1>
       </div>
     </div>
     <!-- end page title -->
@@ -27,9 +27,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>tiger@mail.com</td>
+            <tr *ngFor="let customer of customers">
+              <td>{{ customer["firstName"] + " " + customer["lastName"] }}</td>
+              <td>{{ customer["email"] }}</td>
               <td>$320,800</td>
               <td>
                 <button class="btn btn-sm btn-primary">View Trades</button>

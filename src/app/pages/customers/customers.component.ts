@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
+import {CustomerService} from '../../services/customer.service';
 
 @Component({
   selector: 'app-customers',
@@ -8,10 +9,22 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CustomersComponent implements OnInit {
 
-  constructor(private toastr: ToastrService) { }
+  customers: [] = [];
+
+  constructor(private toastr: ToastrService, private customerService: CustomerService) {
+  }
 
   ngOnInit(): void {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+    this.getUsers()
+  }
+
+  getUsers() {
+    this.customerService.customers().subscribe(response => {
+      console.log(response);
+      this.customers = response
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
