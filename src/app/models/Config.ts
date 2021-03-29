@@ -1,7 +1,12 @@
 class Config {
+
+  static apiUrl(): string {
+    return "http://ec2-18-222-109-113.us-east-2.compute.amazonaws.com"
+  }
+
   static saveUserDetails(data: any) {
     sessionStorage.setItem("id", data["id"])
-    sessionStorage.setItem("name", data["username"])
+    sessionStorage.setItem("name", data["fullName"])
     sessionStorage.setItem("email", data["email"])
     sessionStorage.setItem("token", data["accessToken"])
   }

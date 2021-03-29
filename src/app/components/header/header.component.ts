@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Config} from '../../models/Config';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -8,20 +9,19 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  name: string = '';
+  email: string = '';
 
-  name: string = ""
-  email: string = ""
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthenticationService) {
+  }
 
   ngOnInit(): void {
     this.name = Config.getName();
     this.email = Config.getEmail();
   }
 
-
   logout() {
-    Config.clear();
-    this.router.navigateByUrl("/login")
+    this.authService.logout();
   }
 
 }
