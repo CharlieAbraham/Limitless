@@ -1,7 +1,9 @@
 class Config {
 
   static apiUrl(): string {
-    return "18.222.109.113"
+    //return "http://8ff047aa74ea.ngrok.io"
+    return "http://ec2-18-222-109-113.us-east-2.compute.amazonaws.com"
+    //return "http://18.222.109.113"
   }
 
   static saveUserDetails(data: any) {
@@ -9,13 +11,13 @@ class Config {
     sessionStorage.setItem("name", data["fullName"])
     sessionStorage.setItem("email", data["email"])
     sessionStorage.setItem("token", data["accessToken"])
-  }
+  } 
 
   static getName () {
     return sessionStorage.getItem("name")
   }
   static getEmail () {
-    return sessionStorage.getItem("email")
+    return sessionStorage.getItem("email") 
   }
 
   static getId () {

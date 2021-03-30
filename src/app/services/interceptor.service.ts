@@ -16,14 +16,17 @@ export class InterceptorService implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //get the token
     let token = Config.getToken();
-
-    // clone the request and add authorization header
-    let request = req.clone({
-      setHeaders: {
-        'Authorization': `Bearer ${token}`
-      }
-    });
-
+    let request;
+    //clone the request and add authentication header
+    if (token === null || token === undefined) {
+      request = req;
+    } else {
+      request = req.clone({
+        setHeaders: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+    }
     return next.handle(request).pipe(
       retry(1),
       catchError((err: HttpErrorResponse) => {
@@ -36,4 +39,4 @@ export class InterceptorService implements HttpInterceptor{
       })
     );
   }
-}
+} 
