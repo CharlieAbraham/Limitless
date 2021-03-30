@@ -1,7 +1,7 @@
 class Config {
 
   static apiUrl(): string {
-    return "http://ec2-18-222-109-113.us-east-2.compute.amazonaws.com"
+    return "18.222.109.113"
   }
 
   static saveUserDetails(data: any) {
