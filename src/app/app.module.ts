@@ -18,6 +18,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {InterceptorService} from './services/interceptor.service';
 import {MarketDataComponent} from './pages/market-data/market-data.component';
+import {DashboardComponent} from './pages/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {MarketDataComponent} from './pages/market-data/market-data.component';
     LoginComponent,
     BaseLayoutComponent,
     HeaderComponent,
+    DashboardComponent,
     NavbarComponent,
     MarketDataComponent,
     FooterComponent,

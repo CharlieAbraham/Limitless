@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       console.log('response', response);
       this.toastr.success('Login successful', 'Success');
       Config.saveUserDetails(response);
-      this.router.navigateByUrl('/trades');
+      this.router.navigateByUrl('/dashboard');
     }, error => {
       console.log('error', error);
       this.toastr.error('Invalid Credentials', 'Success');
