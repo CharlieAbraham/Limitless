@@ -20,22 +20,57 @@
           <table id="datatable" class="display compact table table-striped table-bordered">
             <thead>
             <tr>
-              <th>Quantity</th>
-              <th>Price (USD)</th>
-              <th>Date</th>
+              <th class="text-center">Product</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Side</th>
+              <th class="text-center">Portfolio</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Exchange</th>
+              <th class="text-center">Timestamp</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>Tiger Nixon</td>
-              <td>tiger@mail.com</td>
+            <tr *ngFor="let execution of executions">
+              <td>
+                <div class="text-center">{{execution["product"]}}</div>
+              </td>
+              <td class="text-center">
+                <div class="text-center">{{execution["quantity"]}}</div>
+              </td>
+              <td>
+                <div class="text-center"><span>USD</span>{{execution["price"]}}</div>
+              </td>
+              <td>
+                <div class="text-center">{{execution["side"]}}</div>
+              </td>
+              <td>
+                <div class=" text-center">{{execution["portfolioName"]}}</div>
+              </td>
+              <td>
+                <div *ngIf="execution['status']?.toLowerCase() === 'pending'"
+                     class="badge badge-danger text-capitalize">{{execution["status"]}}</div>
+                <div *ngIf="execution['status']?.toLowerCase() === 'success'"
+                     class="badge badge-success text-capitalize">{{execution["status"]}}</div>
+              </td>
+              <td>
+                <div class=" text-center">{{execution["exchange"]}}</div>
+              </td>
+              <td>
+                <div class=" text-center">{{execution["timestamp"]}}</div>
+              </td>
+            </tr>
             </tbody>
             <tfoot>
             <tr>
-              <th>Quantity</th>
-              <th>Price (USD)</th>
-              <th>Date</th>
+              <th class="text-center">Product</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Side</th>
+              <th class="text-center">Portfolio</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Exchange</th>
+              <th class="text-center">Timestamp</th>
             </tr>
             </tfoot>
           </table>

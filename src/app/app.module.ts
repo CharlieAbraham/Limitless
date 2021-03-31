@@ -17,6 +17,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {InterceptorService} from './services/interceptor.service';
+import {MarketDataComponent} from './pages/market-data/market-data.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {InterceptorService} from './services/interceptor.service';
     BaseLayoutComponent,
     HeaderComponent,
     NavbarComponent,
+    MarketDataComponent,
     FooterComponent,
     UsersComponent,
     CustomersComponent,

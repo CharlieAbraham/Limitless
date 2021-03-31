@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { TradeService } from 'src/app/services/trade.service';
+import {Component, OnInit} from '@angular/core';
+import {TradeService} from 'src/app/services/trade.service';
 
 @Component({
   selector: 'app-trades',
@@ -9,20 +9,31 @@ import { TradeService } from 'src/app/services/trade.service';
 export class TradesComponent implements OnInit {
 
   trades: any[] = [];
+  filteredTrades: any[] = [];
 
-  constructor(private tradeService: TradeService) { }
+  constructor(private tradeService: TradeService) {
+  }
 
   ngOnInit(): void {
-  this.getTrades()
+    this.getTrades();
   }
- 
+
   getTrades() {
-  this.tradeService.trade().subscribe(response=>{
-     console.log(response);
-     this.trades = response
-  },error =>{
-    console.log(error)
-  });
-}
-  
+    this.tradeService.trades().subscribe(response => {
+      console.log(response);
+      this.trades = response;
+      this.filteredTrades = response;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  filterTrades(value: string = 'all') {
+    if (value === 'all') {
+      this.filteredTrades = this.trades;
+    } else {
+      this.filteredTrades = this.trades.filter(trade => trade['status']?.toLowerCase() === value.toLowerCase());
+    }
+  }
+
 }

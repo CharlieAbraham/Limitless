@@ -4,7 +4,7 @@
     <!-- begin page title -->
     <div class="d-block d-sm-flex flex-nowrap align-items-center">
       <div class="page-title mb-2 mb-sm-0">
-        <h1>Trades</h1>
+        <h1>Trades ({{ filteredTrades.length }})</h1>
       </div>
     </div>
     <!-- end page title -->
@@ -18,42 +18,48 @@
       <div class="card-body">
         <div class="row justify-content-end">
           <div class="btn-group m-3" role="group" aria-label="Basic outlined example">
-            <button type="button" class="btn btn-outline-primary">All</button>
-            <button type="button" class="btn btn-outline-primary">Open</button>
-            <button type="button" class="btn btn-outline-primary">Closed</button>
-            <button type="button" class="btn btn-outline-primary">Failed</button>
+            <button type="button" class="btn btn-outline-primary" (click)="filterTrades()">All</button>
+            <button type="button" class="btn btn-outline-primary" (click)="filterTrades('pending')">Pending</button>
+            <button type="button" class="btn btn-outline-primary" (click)="filterTrades('success')">Success</button>
           </div>
         </div>
         <div class="datatable-wrapper table-responsive">
           <table id="datatable" class="display compact table table-striped table-bordered">
             <thead>
             <tr>
-              <th>Customer</th>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price (USD)</th>
-              <th>Date</th>
-              <th>Side</th>
-              <th>Exchange</th>
-              <th>Status</th>
-              <th>Actions</th>
+              <th class="text-center">Product</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Price</th>
+              <th class="text-center">Side</th>
+              <th class="text-center">Portfolio</th>
+              <th class="text-center">Status</th>
+              <th class="text-center">Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let trade of trades">
-              <td>{{trades["id"]}}</td>
-              <td>{{trades["product"]}}</td>
-              <td>{{trades["quantity"]}}</td>
-              <td>{{trades["price"]}}</td>
-              <td>{{trades["date"]}}</td>
-              <td>{{trades["side"]}}</td>
-              <td>{{trades["exchange"]}}</td>
-              <td>{{trades["status"]}}</td>
+            <tr *ngFor="let trade of filteredTrades">
+              <td>{{trade["product"]}}</td>
+              <td>{{trade["quantity"]}}</td>
+              <td>{{trade["price"]}}</td>
+              <td>{{trade["side"]}}</td>
               <td>
-                <button routerLink="/trades/1/details" class="btn btn-sm btn-primary">View Details</button>
+                <div>{{trade["portfolioName"]}}</div>
+              </td>
+              <td>
+                <div *ngIf="trade['status']?.toLowerCase() === 'pending'"
+                     class="badge badge-danger text-capitalize">{{trade["status"]}}</div>
+                <div *ngIf="trade['status']?.toLowerCase() === 'success'"
+                     class="badge badge-success text-capitalize">{{trade["status"]}}</div>
+              </td>
+
+              <td>
+                <div class=" d-flex justify-content-between">
+                  <button [routerLink]="['/trades', trade['orderId'], 'details']" class="btn btn-sm btn-primary">
+                    View Details
+                  </button>
+                </div>
               </td>
             </tbody>
-          
           </table>
         </div>
       </div>

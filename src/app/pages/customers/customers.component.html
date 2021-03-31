@@ -30,7 +30,7 @@
             <tr *ngFor="let customer of customers">
               <td>{{ customer["firstName"] + " " + customer["lastName"] }}</td>
               <td>{{ customer["email"] }}</td>
-              <td>$320,800</td>
+              <td>{{ customer["accountBalance"] }}</td>
               <td>
                 <button class="btn btn-sm btn-primary">View Trades</button>
               </td>

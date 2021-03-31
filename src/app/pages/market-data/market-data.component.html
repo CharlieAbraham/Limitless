@@ -30,19 +30,38 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>tiger@mail.com</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
+            <tr *ngFor="let data of marketData">
+              <td class="text-center">
+                <div>{{data["TICKER"]}}</div>
+              </td>
+              <td class="text-center">
+                <div> {{data["SELL_LIMIT"]}}</div>
+              </td>
+              <td>
+                <div class="text-center">{{ data["LAST_TRADED_PRICE"]}}</div>
+              </td>
+
+              <td>
+                <div class="text-center">{{ data["MAX_PRICE_SHIFT"] }}</div>
+              </td>
+
+              <td>
+                <div class="text-center">{{ data["ASK_PRICE"] }}</div>
+              </td>
+
+              <td>
+                <div class="text-center">{{ data["BID_PRICE"] }}</div>
+              </td>
+
+              <td>
+                <div class="text-center">{{ data["BUY_LIMIT"] }}</div>
+              </td>
+            </tr>
             </tbody>
             <tfoot>
             <tr>
-              <th>Ticker</th> 
-              <th>Sell Limit</th> 
+              <th>Ticker</th>
+              <th>Sell Limit</th>
               <th>Last Traded Price</th>
               <th>Max Price</th>
               <th>Ask Price</th>
