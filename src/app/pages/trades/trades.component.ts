@@ -8,21 +8,21 @@ import { TradeService } from 'src/app/services/trade.service';
 })
 export class TradesComponent implements OnInit {
 
-  constructor(private tradeService:TradeService) { }
+  trades: any[] = [];
+
+  constructor(private tradeService: TradeService) { }
 
   ngOnInit(): void {
   this.getTrades()
   }
  
   getTrades() {
-  this.tradeService.getTrades().subscribe(response=>{
+  this.tradeService.trade().subscribe(response=>{
      console.log(response);
+     this.trades = response
   },error =>{
     console.log(error)
-  }
-  )
-   
-
-  }
+  });
+}
   
 }

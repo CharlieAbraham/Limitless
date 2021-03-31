@@ -10,7 +10,7 @@ export class TradeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getTrades() : Observable<any> {
+  trade() : Observable<any> {
     return this.httpClient.get(Config.apiUrl() + "/trade/all/0")
   }
 }

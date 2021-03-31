@@ -40,32 +40,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>Tiger Nixon</td>
-              <td>Tiger Nixon</td>
-              <td>tiger@mail.com</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
-              <td>$320,800</td>
+            <tr *ngFor="let trade of trades">
+              <td>{{trades["id"]}}</td>
+              <td>{{trades["product"]}}</td>
+              <td>{{trades["quantity"]}}</td>
+              <td>{{trades["price"]}}</td>
+              <td>{{trades["date"]}}</td>
+              <td>{{trades["side"]}}</td>
+              <td>{{trades["exchange"]}}</td>
+              <td>{{trades["status"]}}</td>
               <td>
                 <button routerLink="/trades/1/details" class="btn btn-sm btn-primary">View Details</button>
               </td>
             </tbody>
-            <tfoot>
-            <tr>
-              <th>Customer</th>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Price (USD)</th>
-              <th>Date</th>
-              <th>Side</th>
-              <th>Exchange</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-            </tfoot>
+          
           </table>
         </div>
       </div>
